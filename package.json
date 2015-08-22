@@ -1,0 +1,28 @@
+{
+  "name": "falcor-koa",
+  "version": "0.1.0-alpha",
+  "description": "Falcor Middleware for Koa.",
+  "main": "dist/index.js",
+  "scripts": {
+    "dist": "babel -d dist/ lib/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfellner/falcor-koa.git"
+  },
+  "keywords": [
+    "falcor",
+    "koa"
+  ],
+  "author": "Maximilian Fellner",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mfellner/falcor-koa/issues"
+  },
+  "homepage": "https://github.com/mfellner/falcor-koa#readme",
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-eslint": "^4.0.10",
+    "eslint": "^1.2.1"
+  }
+}
