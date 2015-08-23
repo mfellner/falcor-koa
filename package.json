@@ -3,8 +3,12 @@
   "version": "0.1.0-alpha",
   "description": "Falcor Middleware for Koa.",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=0.12"
+  },
   "scripts": {
-    "dist": "babel -d dist/ lib/"
+    "dist": "babel -d dist/ lib/",
+    "test": "mocha --harmony --compilers js:babel/register"
   },
   "repository": {
     "type": "git",
@@ -20,9 +24,18 @@
     "url": "https://github.com/mfellner/falcor-koa/issues"
   },
   "homepage": "https://github.com/mfellner/falcor-koa#readme",
+  "peerDependencies": {
+    "falcor-router": "^0.2.9",
+    "koa": "^1.0.0"
+  },
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-eslint": "^4.0.10",
-    "eslint": "^1.2.1"
+    "eslint": "^1.2.1",
+    "falcor-router": "^0.2.9",
+    "koa": "^1.0.0",
+    "mocha": "^2.2.5",
+    "should": "^7.0.4",
+    "supertest": "^1.0.1"
   }
 }
