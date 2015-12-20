@@ -26,16 +26,16 @@
   "homepage": "https://github.com/mfellner/falcor-koa#readme",
   "peerDependencies": {
     "falcor-router": "^0.2.9",
-    "koa": "^1.0.0"
+    "koa": "^2.0.0"
   },
   "devDependencies": {
-    "babel": "^5.8.21",
+    "babel": "^5.8.34",
     "babel-eslint": "^4.0.10",
-    "eslint": "^1.2.1",
-    "falcor-router": "^0.2.9",
-    "koa": "^1.0.0",
-    "mocha": "^2.2.5",
-    "should": "^7.0.4",
+    "eslint": "^1.10.3",
+    "falcor-router": "^0.2.12",
+    "koa": "^2.0.0-alpha.3",
+    "mocha": "^2.3.4",
+    "should": "^8.0.2",
     "supertest": "^1.0.1"
   }
 }

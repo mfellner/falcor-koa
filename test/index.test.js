@@ -7,7 +7,7 @@
  * mfellner <max.fellner@gmail.com>
  */
 import request from 'supertest'
-import koa from 'koa'
+import Koa from 'koa'
 import should from 'should'
 import FalcorRouter from 'falcor-router'
 
@@ -15,7 +15,7 @@ import { dataSourceRoute } from '../lib'
 
 describe('dataSourceRoute', () => {
 
-  const app = koa()
+  const app = new Koa()
   app.use(dataSourceRoute(new FalcorRouter([{
     route: 'test',
     get: function() {
