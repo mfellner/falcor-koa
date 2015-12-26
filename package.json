@@ -4,11 +4,11 @@
   "description": "Falcor Middleware for Koa.",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=0.12"
+    "node": ">=4.0"
   },
   "scripts": {
     "dist": "babel -d dist/ lib/",
-    "test": "mocha --harmony --compilers js:babel/register"
+    "test": "mocha --compilers js:babel-register"
   },
   "repository": {
     "type": "git",
@@ -29,13 +29,21 @@
     "koa": "1.1.x"
   },
   "devDependencies": {
-    "babel": "5.8.x",
-    "babel-eslint": "4.0.x",
+    "babel-cli": "6.3.x",
+    "babel-core": "6.3.x",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-preset-es2015-node4": "2.0.x",
+    "babel-register": "6.3.x",
     "eslint": "1.10.x",
     "falcor-router": "0.2.x",
     "koa": "1.1.x",
     "mocha": "2.3.x",
     "should": "8.0.x",
     "supertest": "1.1.x"
+  },
+  "babel": {
+    "presets": [
+      "es2015-node4"
+    ]
   }
 }

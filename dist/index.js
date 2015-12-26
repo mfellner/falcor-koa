@@ -1,39 +1,38 @@
-/**!
- * falcor-koa - index.js
- * Copyright(c) 2015
- * Released under the Apache-2.0 license
- *
- * Authors:
- * mfellner <max.fellner@gmail.com>
- */
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.dataSourceRoute = dataSourceRoute;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _url = require('url');
 
 var _url2 = _interopRequireDefault(_url);
 
-var parseArgs = Object.freeze({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const parseArgs = Object.freeze({
   jsonGraph: true,
   callPath: true,
   arguments: true,
   pathSuffixes: true,
   paths: true
-});
+}); /**!
+     * falcor-koa - index.js
+     * Copyright(c) 2015
+     * Released under the Apache-2.0 license
+     *
+     * Authors:
+     * mfellner <max.fellner@gmail.com>
+     */
 
 function requestToContext(req) {
-  var queryMap = req.method === 'POST' ? req.body : _url2['default'].parse(req.url, true).query;
-  var context = {};
+  const queryMap = req.method === 'POST' ? req.body : _url2.default.parse(req.url, true).query;
+  const context = {};
 
   if (queryMap) {
-    Object.keys(queryMap).forEach(function (key) {
-      var arg = queryMap[key];
+    Object.keys(queryMap).forEach(key => {
+      let arg = queryMap[key];
 
       if (parseArgs[key] && arg) {
         context[key] = JSON.parse(arg);
@@ -47,37 +46,27 @@ function requestToContext(req) {
 
 function dataSourceRoute(dataSource) {
   return function* (next) {
-    var _this = this;
-
     if (!dataSource) {
-      this['throw']('Undefined data source', 500);
+      this.throw('Undefined data source', 500);
     }
 
-    var ctx = requestToContext(this.request);
+    const ctx = requestToContext(this.request);
 
     if (Object.keys(ctx).length === 0) {
-      this['throw']('Request not supported', 500);
+      this.throw('Request not supported', 500);
     }
     if (!ctx.method || !ctx.method.length) {
-      this['throw']('No query method provided', 500);
+      this.throw('No query method provided', 500);
     }
     if (!dataSource[ctx.method]) {
-      this['throw']('Data source does not implement method ' + ctx.method, 500);
+      this.throw(`Data source does not implement method ${ ctx.method }`, 500);
     }
 
-    var observable = ({
-      'set': function set() {
-        return dataSource[ctx.method](ctx.jsonGraph);
-      },
-      'call': function call() {
-        return dataSource[ctx.method](ctx.callPath, ctx.arguments, ctx.pathSuffixes, ctx.paths);
-      },
-      'get': function get() {
-        return dataSource[ctx.method]([].concat(ctx.paths || []));
-      },
-      'undefined': function undefined() {
-        return _this['throw']('Unsupported method ' + ctx.method, 500);
-      }
+    const observable = ({
+      'set': () => dataSource[ctx.method](ctx.jsonGraph),
+      'call': () => dataSource[ctx.method](ctx.callPath, ctx.arguments, ctx.pathSuffixes, ctx.paths),
+      'get': () => dataSource[ctx.method]([].concat(ctx.paths || [])),
+      'undefined': () => this.throw(`Unsupported method ${ ctx.method }`, 500)
     })[ctx.method]();
 
     // Note: toPromise could be removed in the future (https://github.com/Netflix/falcor/issues/464)
