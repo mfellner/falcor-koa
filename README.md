@@ -11,8 +11,10 @@ Inspired by [falcor-express](https://github.com/Netflix/falcor-router/).
 var Koa = require('koa');
 var FalcorRouter = require('falcor-router');
 var falcorKoa = require('falcor-koa');
+var bodyParser = require('koa-bodyparser');
 var app = Koa();
 
+app.use(bodyParser());
 app.use(falcorKoa.dataSourceRoute(new FalcorRouter([{
   route: 'greeting',
   get: function() {
