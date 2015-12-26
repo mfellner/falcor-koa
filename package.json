@@ -1,6 +1,6 @@
 {
   "name": "falcor-koa",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-alpha.2",
   "description": "Falcor Middleware for Koa.",
   "main": "dist/index.js",
   "engines": {
