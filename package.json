@@ -27,6 +27,7 @@
     "falcor-router": "^0.8.1",
     "jest": "^22.0.1",
     "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
     "supertest": "^3.0.0"
   },
   "engines": {
