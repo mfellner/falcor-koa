@@ -1,49 +1,46 @@
 {
   "name": "falcor-koa",
   "version": "0.1.0-alpha.2",
-  "description": "Falcor Middleware for Koa.",
-  "main": "dist/index.js",
-  "engines": {
-    "node": ">=4.0"
+  "description": "Falcor Middleware for Koa",
+  "homepage": "https://github.com/mfellner/falcor-koa",
+  "author": {
+    "name": "Maximilian Fellner",
+    "email": "max.fellner@gmail.com",
+    "url": "https://maximilianfellner.eu"
   },
+  "main": "lib/index.js",
   "scripts": {
-    "dist": "babel -d dist/ lib/",
-    "test": "mocha --compilers js:babel-register"
+    "test": "jest",
+    "lint": "eslint lib test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mfellner/falcor-koa.git"
+  "repository": "mfellner/falcor-koa",
+  "bugs": {
+    "url": "https://github.com/mfellner/falcor-koa/issues"
   },
   "keywords": [
     "falcor",
     "koa"
   ],
-  "author": "Maximilian Fellner",
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/mfellner/falcor-koa/issues"
-  },
-  "homepage": "https://github.com/mfellner/falcor-koa#readme",
-  "peerDependencies": {
-    "falcor-router": "0.2.x",
-    "koa": "1.1.x"
-  },
   "devDependencies": {
-    "babel-cli": "6.3.x",
-    "babel-core": "6.3.x",
-    "babel-eslint": "^5.0.0-beta6",
-    "babel-preset-es2015-node4": "2.0.x",
-    "babel-register": "6.3.x",
-    "eslint": "1.10.x",
-    "falcor-router": "0.2.x",
-    "koa": "1.1.x",
-    "mocha": "2.3.x",
-    "should": "8.0.x",
-    "supertest": "1.1.x"
+    "eslint": "^4.13.1",
+    "falcor-router": "^0.8.1",
+    "jest": "^22.0.1",
+    "koa": "^2.4.1",
+    "supertest": "^3.0.0"
   },
-  "babel": {
-    "presets": [
-      "es2015-node4"
-    ]
+  "engines": {
+    "node": "^7.10.1 || >= 8.1.4"
+  },
+  "files": [
+    "lib"
+  ],
+  "jest": {
+    "testMatch": [
+      "**/test/*.js"
+    ],
+    "testEnvironment": "node",
+    "verbose": true,
+    "bail": true
   }
 }
